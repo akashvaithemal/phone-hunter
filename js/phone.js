@@ -36,9 +36,7 @@ const displaySearchResult = data => {
         alert("Not Found");
     
      }
-     else if(data.length>20){
-        data.slice(0,20);
-    }
+     
     data.forEach(data => {
         // console.log(data);
         const div = document.createElement('div');
@@ -52,6 +50,8 @@ const displaySearchResult = data => {
                     <h5 class="card-title">${data.phone_name}</h5>
                     <p class="card-text">${data.brand}</p>
                 </div>
+        <button  class="btn btn-outline-secondary" type="button" id="button-search">Details</button>
+
         </div>
         `;
         // setting child to parent 
@@ -69,7 +69,7 @@ const loadPhoneDetail = (dataId) => {
         .then(data =>displayPhoneDetails(data.data))
 }
 const displayPhoneDetails = phone => {
-    console.log(phone)
+    // console.log(phone)
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     // creating card for single element 
