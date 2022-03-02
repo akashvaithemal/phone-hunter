@@ -15,6 +15,7 @@ const searchPhone = () => {
     // clearing input section value 
     searchField.value ='';
     
+    
     // getting data 
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 // console.log(url)
@@ -64,7 +65,7 @@ const displaySearchResult = data => {
 // getting id number 
 const loadPhoneDetail = (dataId) => {
     // console.log(dataId)
-    
+   
     const url = `https://openapi.programming-hero.com/api/phone/${dataId}`;
     // console.log(url)
         fetch(url)
@@ -75,27 +76,38 @@ const displayPhoneDetails = phone => {
     // console.log(phone)
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
+   
     // creating card for single element 
     const div = document.createElement('div');
-    div.classList.add('card');
-   
+    div.classList.add('card','flex-row');
+    
+    
     div.innerHTML =`
-               <img  src="${phone.image}" class="card-img-top" alt="...">
-                <div  class="card-body">
-                  <h5 class="card-title">${phone.name}</h5>
-                  <p class="card-text">${phone.releaseDate}</p>
-                  <p class="card-text">Brand: ${phone.brand}</p>
-                  <p class="card-text">Chipset:${phone.mainFeatures.chipSet} 
+               
+                <div  class="card-body w-50 ">
+                <img  src="${phone.image}" class="card-img-top w-50" alt="...">
+                  <h3 class="card-title">${phone.name}</h3>
+                  <h4 class="card-text">Brand: ${phone.brand}</h4>
+                  
+                  <h5 class="card-text">Main Features -</h5>
+
+                  
+                  <p class="card-text"><b>Chipset: </b>${phone.mainFeatures.chipSet} 
                   <br>
-                  Display Size:${phone.mainFeatures.displaySize}
+                  <b>Display Size: </b>${phone.mainFeatures.displaySize}
                   <br>
-                  Memory:${phone.mainFeatures.memory}
+                  <b> Memory: </b>${phone.mainFeatures.memory}
                   <br>
-                  Storage:${phone.mainFeatures.storage}
-                 
+                  <b> Storage:</b> ${phone.mainFeatures.storage}
+                  <br>
+                  <b>Sensors:</b> ${phone.mainFeatures.sensors}
+                  <br>
+                  <b>Others: </b> ${phone.others.Bluetooth} ,<br> <b> GPS:</b> ${phone.others.GPS},<b>NFC:</b> ${phone.others.NFC} ,<b> Radio: </b>${phone.others.Radio} ,
+                  <b>USB: </b>${phone.others.USB} , <b>WLAN: </b>${phone.others.WLAN}
+                  
 
                   </p>
-                  
+                  <h5 class="card-text">${phone.releaseDate}</h5>
                    
                   
                   
@@ -103,6 +115,7 @@ const displayPhoneDetails = phone => {
     `;
     // add to parent 
     phoneDetails.appendChild(div);
+    
 }
 
    
