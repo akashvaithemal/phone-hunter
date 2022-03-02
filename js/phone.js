@@ -25,7 +25,8 @@ const searchPhone = () => {
 
 // showing search result 
 const displaySearchResult = data => {
-    // console.log(data)
+    const vag =data.slice(0,20);
+    console.log(vag)
     const searchResult = document.getElementById('search-result');
     // previous given input result clearing 
     searchResult.textContent = '';
@@ -37,8 +38,9 @@ const displaySearchResult = data => {
     
      }
      
-    data.forEach(data => {
+    vag.forEach(data =>  {
         // console.log(data);
+        
         const div = document.createElement('div');
         div.classList.add('col');
         
@@ -49,6 +51,7 @@ const displaySearchResult = data => {
                 <div class="card-body">
                     <h5 class="card-title">${data.phone_name}</h5>
                     <p class="card-text">${data.brand}</p>
+                  
                 </div>
         <button  class="btn btn-outline-secondary" type="button" id="button-search">Details</button>
 
